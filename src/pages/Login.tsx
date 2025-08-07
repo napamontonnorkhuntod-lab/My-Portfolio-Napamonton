@@ -6,7 +6,6 @@ import { useState,useEffect } from "react";
 // import services from "../assets/config/services.js";
 // import api from "../assets/js/apiUrl.js";
 import { useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
 
 const Login = () =>{
      const [username, setUsername] = useState('')

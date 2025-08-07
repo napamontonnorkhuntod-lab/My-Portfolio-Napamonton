@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
 import CardComponent from "../components/CardComponent";
-import services from "../assets/config/services";
-import api from "../assets/js/apiUrl";
+// import services from "../assets/config/services";
+// import api from "../assets/js/apiUrl";
 
 import { Container, Box, Typography, Button, Skeleton,Card,CardHeader,CardContent, CircularProgress  } from "@mui/material";
 
@@ -16,12 +16,6 @@ import Swal from 'sweetalert2';
 const UserList:React.FC = () => {
   
 
-  type user = {
-    id:number,
-    firstname:string,
-    username:string,
-    address:string,
-  }
   type gpt = {
     userId: number,
     id: number,

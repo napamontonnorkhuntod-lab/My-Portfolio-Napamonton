@@ -8,7 +8,7 @@ import Line from "../components/Line";
 
 import SubNav from "../assets/config/subMenu";
 
-import { useRef, useState } from "react";
+import { useRef} from "react";
 
   
   const Home: React.FC = () => {
