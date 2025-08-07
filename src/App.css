@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+body{
+  font-family: 'Roboto', 'NotoSansThai', sans-serif !important; 
+  background-color: #121F28 !important;  
+  color: white !important;
+}
+.body-login::before{
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;    
+    opacity: 0.7;
+    z-index: 1;
+  }
+  
+  .btn-menu {
+    position: relative;
+    overflow: hidden;
+    color: white !important;
+  }
+  
+  /* เส้นสีแดงด้านล่าง */
+  .btn-menu::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: #D32F2F;
+    transition: width 0.3s ease;
+  }
+  
+  .btn-menu:hover::before {
+    width: 100%;
+  }
+  
+  .card-title-span span {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+ 
+
+  
