@@ -143,7 +143,7 @@ const UserForm:React.FC<Formprops> = (props) => {
                     getOptionLabel={(Option)=> Option.title}
                     sx={{ width: 500 }}
                     renderInput={(params) => <TextField {...params} label="Ueser" />}
-                    onChange={(value)=> {                        
+                    onChange={(e,value)=> {                        
                         if(value){
                             setForm((prev) =>({
                                 ...prev,
