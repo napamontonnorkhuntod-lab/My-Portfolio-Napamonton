@@ -18,8 +18,7 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import Avatar from '@mui/material/Avatar';
+
 
 
 const Navbar:React.FC = () =>{
@@ -27,7 +26,7 @@ const Navbar:React.FC = () =>{
     const navigate = useNavigate()
 
     const pages = menu;
-    const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
 
 
     const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);    

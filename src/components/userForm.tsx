@@ -1,5 +1,5 @@
 import { Box,Button,TextField,TextareaAutosize,Typography, Autocomplete, CircularProgress} from "@mui/material";
-import { useState, type ReactEventHandler, useEffect, useId } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 interface formProps{
@@ -53,7 +53,7 @@ const UserForm:React.FC<Formprops> = (props) => {
 
     const [loading, setLoading] = useState(false)
 
-    const [limit, setLimit] = useState<number>(10)
+
 
 
     useEffect(() => {                              
@@ -93,10 +93,6 @@ const UserForm:React.FC<Formprops> = (props) => {
         fetchData()
     }, [])
 
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => {
-        setOpen(true);
-    };
     
 
     const fetchData = () => {

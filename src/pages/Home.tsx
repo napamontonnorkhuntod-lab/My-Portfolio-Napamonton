@@ -1,61 +1,68 @@
-import { Container, Box, Typography, CssBaseline,Button, colors } from '@mui/material'
-import { red } from "@mui/material/colors";
+import { Container, Box, Typography, CssBaseline,Button } from '@mui/material'
+
 
 import Navbar from "../components/Navbar";
 import BasicTimeline from "../components/TimeLine";
 import Skill from "../components/Skill";
-import Line from "../components/line";
+import Line from "../components/Line";
 
 import SubNav from "../assets/config/subMenu";
 
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRef, useState } from "react";
+
   
   const Home: React.FC = () => {
 
 
-    const navigate = useNavigate()    
-
-    const [skills, setSkills] = useState([
+    const skills = useRef([
       {
         name:'React',
         skill:'good',
+        pic:'/image/React-icon.svg.png'
       },
       {
         name:'Vue',
         skill:'good',
+        pic:'/image/Vue.js_Logo_2.svg.png'
       },
       {
         name:'Html/Css',
         skill:'good',
+        pic:'/image/5968267.png'
       },
       {
         name:'JavaScript/TypeScript',
         skill:'good',
+        pic:'/image/yuxa9EAfarIcX9EK8Ei1JSjwRnP7e0-metaanMtdHMuanBn-.jpg'
       },
       {
         name:'Bootstarp',
         skill:'good',
+        pic:'/image/5968672.png'
       },
       {
         name:'Tailwind',
         skill:'good',
+        pic:'/image/Tailwind_CSS_Logo.svg.png'
       },
       {
         name:'Material-ui',
         skill:'good',
+        pic:'/image/mui-docs-icon-unplated.png'
       },
       {
         name:'Postman',
         skill:'good',
+        pic:'/image/6934042159649_ac803d1cddbcbef8f110_512.png'
       },
       {
         name:'Git',
         skill:'good',
+        pic:'/image/Git-Icon-1788C.png'
       },
     ])
 
-    const [education, setEducation] = useState([
+    const education = useRef([
       {
         title:'Vocational Certificate - Eastern Technological College',
         subTitle:'Information Technology',
@@ -68,7 +75,7 @@ import { useNavigate } from "react-router-dom";
       },
     ])
 
-    const [experience, setExperience] = useState([
+    const experience = useRef([
       {
         title:' Front End Developer - Vocational Certificate',
         years:'2018',
@@ -102,7 +109,7 @@ import { useNavigate } from "react-router-dom";
       },
     ])
 
-    const [NavbarSetting, setNavbarSetting] = useState(SubNav)
+    const NavbarSetting = useRef<{name: string; link: string;}[]>(SubNav)
     
 
     return (
@@ -207,7 +214,7 @@ import { useNavigate } from "react-router-dom";
         <Box className="w-full bg-[#1c2d38]" id="nav">
           <Container maxWidth={'xl'} className='flex justify-between'>
             {
-              NavbarSetting.map((e,i)=>(
+              NavbarSetting.current.map((e,i)=>(
                 <Button className='p-4' key={i} href={e.link} > {e.name} </Button>
               ))
             }
@@ -240,7 +247,7 @@ import { useNavigate } from "react-router-dom";
             </Typography>
             <Box width={'100%'}>
               {
-                experience.map((e,i)=>(                                    
+                experience.current.map((e,i)=>(                                    
                   <BasicTimeline 
                     key={i}
                     type={'Experiences'}
@@ -261,7 +268,7 @@ import { useNavigate } from "react-router-dom";
             </Typography>
             <Box width={'100%'}>
               {
-                education.map((e,i)=>(
+                education.current.map((e,i)=>(
                   <BasicTimeline 
                     key={i}
                     type={'Education'}
@@ -282,11 +289,12 @@ import { useNavigate } from "react-router-dom";
             </Typography>
             <Box width={'w-full'} className="flex flex-wrap  justify-center">
               {
-                skills.map((e,i)=>(
+                skills.current.map((e,i)=>(
                   <Skill
                     key={i}
                     name={e.name}
                     skill={e.skill}
+                    pic={e.pic}
                   />
                 ))
               }

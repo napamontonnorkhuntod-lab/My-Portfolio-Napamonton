@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 
-import axios, { Axios } from "axios";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 import Navbar from "../components/Navbar";
@@ -9,7 +9,7 @@ import services from "../assets/config/services";
 import api from "../assets/js/apiUrl";
 
 import { Container, Box, Typography, Button, Skeleton,Card,CardHeader,CardContent, CircularProgress  } from "@mui/material";
-import Login from './Login';
+
 import Swal from 'sweetalert2';
 
 
@@ -31,7 +31,7 @@ const UserList:React.FC = () => {
 
   const navigate = useNavigate()
   const [gpts, setGpts] = useState<gpt[]>([])
-  const [users, setUsers] = useState<user[]>([])
+
   const [loading, setLoading] = useState<boolean>(false)
 
   const [favor, setFavor] = useState<{[id:number]:boolean}>({})
@@ -102,14 +102,7 @@ const UserList:React.FC = () => {
   }
 
   
-  const fetchData = () => {
-    services.get(api.users).then((res)=>{          
-      console.log('RES=> ', res);  
-      setUsers(res)
-    }).catch((err)=>{
-      console.log('ERR=> ',err);      
-    })
-  }
+
 
   return (
     <>

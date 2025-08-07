@@ -21,7 +21,7 @@ interface timeLineProps{
 
 const BasicTimeline:React.FC<timeLineProps> = (props) => {
 
-    const [isShow, setIsShow] = useState<boolean>(false)
+
 
   return (
     <>

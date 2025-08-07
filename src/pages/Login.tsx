@@ -27,6 +27,7 @@ const Login = () =>{
         
         e.preventDefault()
         navigate("/home"); 
+        setloading(true)
         // console.log('email',username);
         // console.log('pass',pass);
         // setloading(true)
@@ -87,7 +88,7 @@ const Login = () =>{
                                         data-sb-validations="required,username" 
                                         value={username}
                                         onChange={(e)=> setUsername(e.target.value)}
-                                        required
+                                        
                                     />
                                 </div>
                                 <div className="col-12 my-3">
@@ -99,7 +100,7 @@ const Login = () =>{
                                         aria-describedby="passwordHelpInline"
                                         value={pass}
                                         onChange={(e)=> setPass(e.target.value)}
-                                        required
+                                        
                                     />
                                 </div>
                                 <div className="d-flex w-100 justify-content-end">
