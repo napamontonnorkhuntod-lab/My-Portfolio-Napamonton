@@ -206,7 +206,7 @@ import { useRef} from "react";
               flex
 
               ">
-              <img src="../../public/image/porttest.png" alt="" className='w-[500px]'/>
+              <img src="/image/porttest.png" alt="" className='w-[500px]'/>
             </Box>
           </Box>  
         </Container>

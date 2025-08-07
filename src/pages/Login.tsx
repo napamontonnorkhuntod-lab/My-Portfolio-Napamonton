@@ -68,7 +68,7 @@ const Login = () =>{
                 muted 
                 loop
             >
-                <source src="../../public/vedio/bg.mp4" type="video/mp4" />
+                <source src="/vedio/bg.mp4" type="video/mp4" />
             </video>
             <div className="masthead">
                 <div className="masthead-content text-white">
