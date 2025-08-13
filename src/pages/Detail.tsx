@@ -3,6 +3,8 @@ import { Container} from "@mui/material";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 
+import Navbar  from '../components/Navbar';
+
 
 
 const Detail:React.FC = () =>{
@@ -47,6 +49,7 @@ const Detail:React.FC = () =>{
 
     return (
         <>
+            <Navbar/>
             <Container>
                 <h1 className="text-center">Data Detail</h1>
                 <h3 className="my-3">User ID : {form.userId}</h3>

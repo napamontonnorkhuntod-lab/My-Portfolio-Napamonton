@@ -5,6 +5,8 @@ import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser"
 import Swal from "sweetalert2";
 
+import Navbar  from '../components/Navbar';
+
 const Contact:React.FC = () => { 
 
     interface IsErrors{
@@ -46,8 +48,8 @@ const Contact:React.FC = () => {
         } 
         console.log('sendEmail');
         
-        if (!form.current) return;
-        
+        if(!form.current){return}
+
         emailjs.sendForm('service_7pym8lb','template_c32ljvj',form.current,'DumP433KVqH3-Phs9').then(
             ()=> {
                 form.current?.reset()
@@ -82,7 +84,8 @@ const Contact:React.FC = () => {
     
 
    return(
-        <>             
+        <>           
+            <Navbar/>  
             <Container className="h-[88vh] flex items-center">
                 <Box className="w-full h-[85vh] md:h-[70vh] flex">
                     <Box className="flex w-full items-center">

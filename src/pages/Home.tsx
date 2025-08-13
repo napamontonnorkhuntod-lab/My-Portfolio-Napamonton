@@ -5,6 +5,7 @@ import { Container, Box, Typography,Button } from '@mui/material'
 import BasicTimeline from "../components/TimeLine";
 import Skill from "../components/Skill";
 import Line from "../components/Line";
+import Navbar  from '../components/Navbar';
 
 import SubNav from "../assets/config/subMenu";
 
@@ -114,6 +115,7 @@ import { useRef} from "react";
 
     return (
       <>
+        <Navbar/>
         <Container maxWidth="xl">
           <Box className="flex flex-wrap w-full">
             <Box className="

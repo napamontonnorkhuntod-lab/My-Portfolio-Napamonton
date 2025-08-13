@@ -3,7 +3,7 @@ import React, { useState,useEffect } from 'react'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
+import Navbar  from '../components/Navbar';
 import CardComponent from "../components/CardComponent";
 // import services from "../assets/config/services";
 // import api from "../assets/js/apiUrl";
@@ -100,6 +100,7 @@ const UserList:React.FC = () => {
 
   return (
     <>
+      <Navbar/>
         <Box className="flex flex-wrap w-full justify-center items-center my-3">
             <Typography variant='h3' className='text-white'>
               User List
