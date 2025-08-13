@@ -48,13 +48,12 @@ const Detail:React.FC = () =>{
 
     return (
         <>
-            <Navbar/>
-                <Container>
-                    <h1 className="text-center">Data Detail</h1>
-                    <h3 className="my-3">User ID : {form.userId}</h3>
-                    <h4 className="my-3">Title : {form.title}</h4>
-                    <h5 className="my-3">Body : {form.body}</h5>
-                </Container>
+            <Container>
+                <h1 className="text-center">Data Detail</h1>
+                <h3 className="my-3">User ID : {form.userId}</h3>
+                <h4 className="my-3">Title : {form.title}</h4>
+                <h5 className="my-3">Body : {form.body}</h5>
+            </Container>
             
         </>
     )

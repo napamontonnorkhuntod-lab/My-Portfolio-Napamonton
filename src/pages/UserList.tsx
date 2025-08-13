@@ -100,8 +100,6 @@ const UserList:React.FC = () => {
 
   return (
     <>
-      
-      <Navbar/>
         <Box className="flex flex-wrap w-full justify-center items-center my-3">
             <Typography variant='h3' className='text-white'>
               User List
@@ -116,57 +114,42 @@ const UserList:React.FC = () => {
               Add Data
             </Button>  
         </Box>
-        <Container>          
+        <Container maxWidth='xl'>          
           <div className="flex flex-wrap w-full ms-1 me-2">            
             {
               loading ? (
                 <>
-                      <Box
-                        sx={{
-                          position:'fixed',
-                          display:'flex',
-                          width:'100vw',
-                          height:'100vh',
-                          backgroundColor:'rgba(0, 0, 0, 0.30)',
-                          zIndex:9999,
-                          alignItems:'center',
-                          justifyContent:'center',
-
-                        }}
-                      >
-                        <CircularProgress color="inherit" />
-                      </Box>
-                  {
-                    [...Array(8)].map((_,index) => (
-                      <div key={index} className="w-1/1 sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4 p-2">
-                        <Card sx={{ maxWidth: 345, m: 2,}} className='' >
-                          <CardHeader
-                            avatar={
-                                <Skeleton animation="wave" variant="circular" width={40} height={40} />
-                            }
-                            title={
-                                <Skeleton
-                                  animation="wave"
-                                  height={10}
-                                  width="80%"
-                                  style={{ marginBottom: 6 }}
-                                />
-                            }
-                            subheader={
-                                <Skeleton animation="wave" height={10} width="40%" />
-                            }
-                          />
-                            <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
-                          <CardContent>
-                              <>
-                                <Skeleton animation="wave" height={10} style={{ marginBottom: 6 }} />
-                                <Skeleton animation="wave" height={10} style={{ marginBottom: 6 }} />
-                                <Skeleton animation="wave" height={10} width="70%" />
-                              </>
-                          </CardContent>
-                        </Card>
-                      </div>
-                    ))
+                  {                    
+                      [...Array(8)].map((_,index) => (
+                        <div key={index} className="w-1/1 sm:w-1/2 md:w-1/2 lg:w-1/4 xl:w-1/4 p-2">
+                          <Card sx={{ maxWidth: 345, m: 2,}} className='' >
+                            <CardHeader
+                              avatar={
+                                  <Skeleton animation="wave" variant="circular" width={40} height={40} />
+                              }
+                              title={
+                                  <Skeleton
+                                    animation="wave"
+                                    height={10}
+                                    width="80%"
+                                    style={{ marginBottom: 6 }}
+                                  />
+                              }
+                              subheader={
+                                  <Skeleton animation="wave" height={10} width="40%" />
+                              }
+                            />
+                              <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
+                            <CardContent>
+                                <>
+                                  <Skeleton animation="wave" height={10} style={{ marginBottom: 6 }} />
+                                  <Skeleton animation="wave" height={10} style={{ marginBottom: 6 }} />
+                                  <Skeleton animation="wave" height={10} width="70%" />
+                                </>
+                            </CardContent>
+                          </Card>
+                        </div>
+                      ))
                   }
                 </>
               ) : (

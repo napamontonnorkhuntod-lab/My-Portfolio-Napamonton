@@ -5,12 +5,14 @@ import UserList from "../pages/UserList";
 import Detail from "../pages/Detail"
 import EditUser from "../pages/User/edit";
 import AddUser from "../pages/User/add";
+import Contact from "../pages/contact";
 
 const AppRoute = () =>{
     return(
         <Routes>
             <Route path="/" element={<Login/>} />
             <Route path="/home" element={<Home/>} /> 
+            <Route path="/contact" element={<Contact/>} />
             <Route path="/user-list" element={<UserList/>}></Route>
             <Route path="/user/:id" element={<Detail/>}></Route>
             <Route path="/user/edit/:id" element={<EditUser/>}></Route>

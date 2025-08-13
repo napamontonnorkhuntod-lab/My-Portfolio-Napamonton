@@ -114,9 +114,6 @@ import { useRef} from "react";
 
     return (
       <>
-        <CssBaseline />
-        <Navbar/>
-
         <Container maxWidth="xl">
           <Box className="flex flex-wrap w-full">
             <Box className="

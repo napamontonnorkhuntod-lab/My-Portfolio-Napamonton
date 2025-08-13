@@ -9,7 +9,7 @@ const menu = [
     },
     {
         label:'Contact',
-        path:'/',
+        path:'/contact',
     },
 ]
 

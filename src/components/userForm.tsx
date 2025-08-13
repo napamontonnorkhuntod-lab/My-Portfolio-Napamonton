@@ -121,7 +121,7 @@ const UserForm:React.FC<Formprops> = (props) => {
                     alignItems: 'center',
                     justifyContent: 'center',
                     backgroundColor: 'rgba(0, 0, 0, 0.30)', // พื้นจางๆ
-                    zIndex: 999, // ให้อยู่บนสุด
+                    zIndex: 999,
                     }}
                 >
                     <CircularProgress color="inherit" />
