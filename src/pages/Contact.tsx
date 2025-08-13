@@ -46,6 +46,7 @@ const Contact:React.FC = () => {
         } 
         console.log('sendEmail');
         
+        if (!form.current) return;
         
         emailjs.sendForm('service_7pym8lb','template_c32ljvj',form.current,'DumP433KVqH3-Phs9').then(
             ()=> {

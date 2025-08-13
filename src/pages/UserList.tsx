@@ -3,12 +3,12 @@ import React, { useState,useEffect } from 'react'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-import Navbar from "../components/Navbar";
+
 import CardComponent from "../components/CardComponent";
 // import services from "../assets/config/services";
 // import api from "../assets/js/apiUrl";
 
-import { Container, Box, Typography, Button, Skeleton,Card,CardHeader,CardContent, CircularProgress  } from "@mui/material";
+import { Container, Box, Typography, Button, Skeleton,Card,CardHeader,CardContent } from "@mui/material";
 
 import Swal from 'sweetalert2';
 

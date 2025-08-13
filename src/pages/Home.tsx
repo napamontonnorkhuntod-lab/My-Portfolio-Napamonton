@@ -1,7 +1,7 @@
-import { Container, Box, Typography, CssBaseline,Button } from '@mui/material'
+import { Container, Box, Typography,Button } from '@mui/material'
 
 
-import Navbar from "../components/Navbar";
+
 import BasicTimeline from "../components/TimeLine";
 import Skill from "../components/Skill";
 import Line from "../components/Line";
