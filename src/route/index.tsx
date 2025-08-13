@@ -5,7 +5,7 @@ import UserList from "../pages/UserList";
 import Detail from "../pages/Detail"
 import EditUser from "../pages/User/edit";
 import AddUser from "../pages/User/add";
-import Contact from "../pages/contact";
+import Contact from "../pages/Contact";
 
 const AppRoute = () =>{
     return(
