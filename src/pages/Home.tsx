@@ -1,6 +1,5 @@
 import { Container, Box, Typography,Button } from '@mui/material'
-
-
+import { motion, scale } from "framer-motion";
 
 import BasicTimeline from "../components/TimeLine";
 import Skill from "../components/Skill";
@@ -13,6 +12,33 @@ import { useRef} from "react";
 
   
   const Home: React.FC = () => {
+
+    const MotionTypography = motion(Typography);
+    const MotionBox = motion(Box as any)
+    const MotionButton = motion(Button)
+
+    const containerVariants = {
+      hidden: {}, // ไม่กำหนดอะไร เพราะ parent เองไม่ต้อง animate
+      show: {
+        transition: {
+          staggerChildren: 0.3, // ❗ ลูกแต่ละตัวดีเลย์ 0.3 วิ
+        },
+      },
+    };
+    
+    const itemVariants = {
+      hidden: { opacity: 0, y: -100 },   // เริ่มโปร่งใสและลอยขึ้น
+      show: {
+        opacity: 1,                      // กลายเป็นมองเห็น
+        y: 0,                            // กลับมาที่ตำแหน่งเดิม
+        transition: {
+          type: "spring",                // ใช้เอฟเฟกต์สปริง
+          stiffness: 100,
+          damping: 10,
+        },
+      },
+    };
+    
 
 
     const skills = useRef([
@@ -132,21 +158,43 @@ import { useRef} from "react";
             >
               <Box className="">
                 <Box className="">
-                  <Typography variant='h4' className='my-5' fontWeight={800}sx={{
+                  <MotionTypography 
+                    initial={{opacity:0, y:-100}}
+                    whileInView={{opacity:1, y:0}}
+                    transition={{
+                      type:'spring',
+                      stiffness:100,
+                      damping:10,
+                      delay:0.4
+                    }}
+                    variant='h4' 
+                    className='my-5' 
+                    fontWeight={800}
+                    sx={{
                     textAlign:{
                       xs:'center',
                       lg:'left'
                     }
                   }}>
                     Hello<span className='text-red-600'>.</span>
-                  </Typography>
-                  <Typography variant='h4' className='my-5'
-                  sx={{
-                    textAlign:{
-                      xs:'center',
-                      lg:'left'
-                    }
-                  }}
+                  </MotionTypography>
+                  <MotionTypography 
+                    variant='h4' 
+                    className='my-5'
+                    initial={{opacity:0, y:-100}}
+                    whileInView={{opacity:1, y:0}}
+                    transition={{
+                      type:'spring',
+                      stiffness:100,
+                      damping:10,
+                      delay:0.5
+                    }}
+                    sx={{
+                      textAlign:{
+                        xs:'center',
+                        lg:'left'
+                      }
+                    }}
                   >
                     <span className='text-red-600'>____</span>
                     I'm Napamonton  
@@ -157,8 +205,19 @@ import { useRef} from "react";
                     <span className='text-red-600'>
                       )
                     </span>
-                  </Typography>
-                  <Typography variant='h3' className='my-5' fontWeight={800}
+                  </MotionTypography>
+                  <MotionTypography 
+                    variant='h3' 
+                    className='my-5' 
+                    fontWeight={800}
+                    initial={{opacity:0, y:-100}}
+                    whileInView={{opacity:1, y:0}}
+                    transition={{
+                      type:'spring',
+                      stiffness:100,
+                      damping:10,
+                      delay:0.6
+                    }}
                     sx={{
                       textAlign:{
                         xs:'center',
@@ -167,7 +226,7 @@ import { useRef} from "react";
                     }}
                   >
                     Front End Developer
-                  </Typography>
+                  </MotionTypography>
                 </Box>
                 <Box className="my-5"
                 sx={{
@@ -177,40 +236,74 @@ import { useRef} from "react";
                   }
                 }}
                 >
-                  <Button 
+                  <MotionButton 
+                    initial={{opacity:0, y:-100}}
+                    whileInView={{opacity:1, y:0}}
+                    transition={{
+                      type:'spring',
+                      stiffness:100,
+                      damping:10,
+                      delay:0.7
+                    }}
                     variant='contained' 
                     color='error' 
                     className='px-4 py-2 me-4'
                     sx={{ textTransform:'none' }}
                   >
                     My Project
-                  </Button>
-                  <Button 
+                  </MotionButton>
+                  <MotionButton 
+                    initial={{opacity:0, y:-100}}
+                    whileInView={{opacity:1, y:0}}
+                    transition={{
+                      type:'spring',
+                      stiffness:100,
+                      damping:10,
+                      delay:0.8
+                    }}
                     variant='outlined' 
                     color='error' 
                     className='px-4 py-2'  
                     sx={{ textTransform: 'none' }}
                   >
                     My Resume
-                  </Button>
+                  </MotionButton>
                 </Box>
               </Box>
             </Box>
-            <Box className="
-              xl:w-1/2 
-              lg:w-1/2 
-              w-full 
-              items-end  
-              justify-center 
-              flex
-
-              ">
+            <MotionBox 
+              className="
+                xl:w-1/2 
+                lg:w-1/2 
+                w-full 
+                items-end  
+                justify-center 
+                flex
+              "
+              initial={{opacity:0, scale:0}}
+              whileInView={{opacity:1, scale:1}}
+              transition={{
+                type:'spring',
+                stiffness:100,
+                damping:10,
+                delay:0.4
+              }}
+            >
               <img src="/image/porttest.png" alt="" className='w-[500px]'/>
-            </Box>
+            </MotionBox>
           </Box>  
         </Container>
         
-        <Box className="w-full bg-[#1c2d38]" id="nav">
+        <MotionBox className="w-full bg-[#1c2d38]" id="nav" 
+          initial={{opacity:0, x:100}}
+          animate={{opacity:1, x:0}}
+          transition={{
+            type:'spring',
+            stiffness:100,
+            damping:10,
+            delay:0.4
+          }}
+        >
           <Container maxWidth={'xl'} className='flex justify-between'>
             {
               NavbarSetting.current.map((e,i)=>(
@@ -218,22 +311,40 @@ import { useRef} from "react";
               ))
             }
           </Container>
-        </Box>
+        </MotionBox>
 
         <Container maxWidth={'xl'}>
           <section id="About">
             <Box className="mt-5 w-full" >
-              <Typography variant='h3' fontWeight={500} align='center'>
+              <MotionTypography variant='h3' fontWeight={500} align='center'
+                initial={{opacity:0, y:-100}}
+                whileInView={{opacity:1, y:0}}
+                transition={{
+                  type:'spring',
+                  stiffness:100,
+                  damping:10,
+                  delay:0.4
+                }}
+              >
                 About Me
-              </Typography>
+              </MotionTypography>
             </Box>
             <Box className="w-full">
               <Container>
-                <Typography variant='subtitle1' textAlign={'justify'} align='center'>
+                <MotionTypography variant='subtitle1' textAlign={'justify'} align='center'
+                  initial={{opacity:0, y:-100}}
+                  whileInView={{opacity:1, y:0}}
+                  transition={{
+                    type:'spring',
+                    stiffness:100,
+                    damping:10,
+                    delay:0.5
+                  }}
+                >
                   I’m a frontend developer with 1–2 years of hands-on experience in Vue.js and 3 months of experience in user support as a Help Desk. 
                   I’m currently learning React.js and enjoy creating user-friendly interfaces using modern tools like MUI and Tailwind CSS. 
                   I’m passionate about improving my skills and building impactful web applications.
-                </Typography>
+                </MotionTypography>
               </Container>
             </Box>
           </section>
@@ -241,21 +352,52 @@ import { useRef} from "react";
             <Line/>      
 
           <section id="Experience">
-            <Typography variant='h3' fontWeight={500} align='center'>
+            <MotionTypography variant='h3' fontWeight={500} align='center'
+              initial={{opacity:0, y:-100}}
+              whileInView={{opacity:1, y:0}}
+              transition={{
+                type:'spring',
+                stiffness:100,
+                damping:10,
+                delay:0.4
+              }}
+            >
               Work Experiences
-            </Typography>
-            <Box width={'100%'}>
-              {
-                experience.current.map((e,i)=>(                                    
-                  <BasicTimeline 
-                    key={i}
-                    type={'Experiences'}
-                    title={e.title}
-                    detail={e.detail}
-                    years={e.years}
-                  />
-                ))
-              }
+            </MotionTypography>
+            <Box className="w-full flex flex-wrap">
+              <MotionBox 
+                className="w-full md:w-1/2"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="show"
+              >
+                {
+                  experience.current.map((e,i)=>(                                    
+                    <MotionBox variants={itemVariants} key={i}>
+                      <BasicTimeline                         
+                        type={'Experiences'}
+                        title={e.title}
+                        detail={e.detail}
+                        years={e.years}
+                      />
+                    </MotionBox>
+                  ))
+                }
+              </MotionBox>
+              <MotionBox className="w-full md:w-1/2 flex items-center"
+                initial={{ opacity:0, scale:0}}
+                whileInView={{ opacity:1, scale:1}}
+                transition={{
+                  type:'spring',
+                  stiffness:100,
+                  damping:10,
+                  delay:0.4
+                }}
+              >
+                <Box>
+                  <img src="/image/workEx.jpg" alt=""className='rounded-2xl'/>
+                </Box>
+              </MotionBox>
             </Box>
           </section>
 
@@ -265,18 +407,41 @@ import { useRef} from "react";
             <Typography variant='h3' fontWeight={500} align='center'>
               Education
             </Typography>
-            <Box width={'100%'}>
-              {
-                education.current.map((e,i)=>(
-                  <BasicTimeline 
-                    key={i}
-                    type={'Education'}
-                    title={e.title}
-                    subTitle={e.subTitle}                    
-                    years={e.years}
-                  />
-                ))
-              }
+            <Box className="flex flex-wrap">
+              <MotionBox className="w-full md:w-1/2"
+                initial={{ opacity:0 , scale:0 }}
+                whileInView={{ opacity:1, scale:1 }}
+                transition={{
+                  type:'spring',
+                  stiffness:100,
+                  damping:10,
+                  delay:0.4
+                }}
+              >
+                <Box>
+                  <img src="/image/school.jpg" alt="" className='rounded-2xl'/>
+                </Box>  
+              </MotionBox>
+
+              <MotionBox
+                className="w-full md:w-1/2"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="show"
+              >
+                {
+                  education.current.map((e,i)=>(
+                    <MotionBox key={i} variants={itemVariants}>
+                      <BasicTimeline                         
+                        type={'Education'}
+                        title={e.title}
+                        subTitle={e.subTitle}                    
+                        years={e.years}
+                      />
+                    </MotionBox>
+                  ))
+                }
+              </MotionBox>
             </Box>
           </section>
 
@@ -286,15 +451,24 @@ import { useRef} from "react";
             <Typography variant='h3' fontWeight={500} align='center'>
               My Skills
             </Typography>
-            <Box width={'w-full'} className="flex flex-wrap  justify-center">
+            <Box className="flex flex-wrap  justify-center"
+            >
               {
-                skills.current.map((e,i)=>(
-                  <Skill
-                    key={i}
-                    name={e.name}
-                    skill={e.skill}
-                    pic={e.pic}
-                  />
+                skills.current.map((e,i)=>(                  
+                    <Skill
+                      initial={{ opacity: 0, scale: 0 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 100,
+                        damping: 10,
+                        delay: i * 0.1,
+                      }}
+                      key={i}                      
+                      name={e.name}
+                      skill={e.skill}
+                      pic={e.pic}
+                    />
                 ))
               }
             </Box>

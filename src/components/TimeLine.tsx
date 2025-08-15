@@ -28,34 +28,15 @@ const BasicTimeline:React.FC<timeLineProps> = (props) => {
         <Box width={'100%'}>
 
             <Timeline
-                position={props.type === 'Education' ? 'alternate': undefined}
-
-                sx={
-                    props.type !== 'Education' ? 
-                    {
+                sx={{
                         [`& .${timelineItemClasses.root}:before`]: {
-                        flex: 0,
-                        padding: 0,
+                            flex: 0,
+                            padding: 0,
                         },
-                    } : undefined
-                }
+                }}
             >
                 <TimelineItem>
 
-                    {
-                        props.type === 'Education' && 
-                        (
-                            <TimelineOppositeContent
-
-                                sx={{ m: '0' }}
-                                align="right"
-                                variant="body2"
-                                color="text.error"
-                            >
-                                {props.years}
-                            </TimelineOppositeContent>
-                        )
-                    }
                     <TimelineSeparator>
                         <TimelineDot  color='error' 
                             sx={{
@@ -71,10 +52,14 @@ const BasicTimeline:React.FC<timeLineProps> = (props) => {
                     </TimelineSeparator>
 
                     <TimelineContent sx={{ py: '0px', px: 2 }}>
-                        <Typography variant="h6" component="span" >
+                        <Typography variant="h6" component="span" sx={{width:'100%'}}>
                             {/* {props.title ?? ''} */}
-                            { props.type === 'Education' ? `${props.title ?? ''}`: `${props.title} - ( ${props.years ?? ''} )` }
+                            { props.type === 'Education' ? `${props.title ?? ''}`: props.title }
                         </Typography>
+                        <br />
+                            <Typography variant="h6" component="span"> 
+                                ( {props.years ? props.years : '-'} )
+                            </Typography>
                         <Typography variant='subtitle1'>
                             {
                                 props.type === 'Education' ? 
@@ -82,11 +67,11 @@ const BasicTimeline:React.FC<timeLineProps> = (props) => {
                                     props.subTitle
                                 ) : (
                                     <ul>
-                                    {props.detail?.map((e,i)=>(
-                                        <li key={i}>
-                                            <Typography variant="subtitle1">{e}</Typography>
-                                        </li>
-                                    ))}
+                                        {props.detail?.map((e,i)=>(
+                                            <li key={i}>
+                                                <Typography variant="subtitle1">{e}</Typography>
+                                            </li>
+                                        ))}
                                     </ul>
                                 )
                             }    
