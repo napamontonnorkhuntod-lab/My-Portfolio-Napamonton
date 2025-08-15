@@ -1,5 +1,5 @@
 import { Container, Box, Typography,Button } from '@mui/material'
-import { motion, scale } from "framer-motion";
+import { motion} from "framer-motion";
 
 import BasicTimeline from "../components/TimeLine";
 import Skill from "../components/Skill";
