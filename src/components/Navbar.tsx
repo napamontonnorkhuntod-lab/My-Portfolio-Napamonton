@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import menu from "../assets/config/Menu";
 import { motion } from "framer-motion";
 
 import "../App.css"
@@ -10,47 +9,23 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import CssBaseline from '@mui/material/CssBaseline';
-import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import AdbIcon from '@mui/icons-material/Adb';
-import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
+
+const words = ["DEVELOPER", "FRONT END", "BACK END", "FULL STACK"];
 
 
 
 interface NavbarProps {
-    scrollToSection?: (id: string) => void;
     onShowResume?: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ scrollToSection, onShowResume }) => {
+const Navbar: React.FC<NavbarProps> = ({ onShowResume }) => {
 
     const navigate = useNavigate()
 
-    const pages = menu;
-
-
-
-    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-
-    const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorElNav(event.currentTarget);
-    };
-
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
-
-    const trigger = useScrollTrigger({
-        disableHysteresis: true,
-        threshold: 0,
-    });
-
-    const words = ["DEVELOPER", "FRONT END", "BACK END", "FULL STACK"];
     const [displayedText, setDisplayedText] = useState("");
     const [isDeleting, setIsDeleting] = useState(false);
     const [loopNum, setLoopNum] = useState(0);
@@ -154,7 +129,7 @@ const Navbar: React.FC<NavbarProps> = ({ scrollToSection, onShowResume }) => {
                                 navigate('/home')
                             }
                         >
-                            LOGO
+                            Napamonton
                         </Typography>
 
                         <Box sx={{ flex: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center', alignItems: 'center' }}>

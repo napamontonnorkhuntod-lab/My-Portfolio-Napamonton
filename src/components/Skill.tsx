@@ -12,7 +12,7 @@ type MotionSkillProps = SkillProps & MotionProps;
 
 const MotionBox = motion(Box);
 
-const Skill: React.FC<MotionSkillProps> = ({ name, skill, pic, ...motionProps }) => {
+const Skill: React.FC<MotionSkillProps> = ({ name, pic, ...motionProps }) => {
   return (
     <MotionBox
       {...motionProps}

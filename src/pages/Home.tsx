@@ -14,8 +14,6 @@ import Line from "../components/Line";
 import Navbar from '../components/Navbar';
 import DotNav from '../components/DotNav';
 
-import SubNav from "../assets/config/subMenu";
-
 import { useRef, useState, useEffect, useCallback } from "react";
 
 // ========== Section animation variants ==========
@@ -298,7 +296,7 @@ const Home: React.FC = () => {
           ref={(el) => { sectionRefs.current[0] = el; }}
           id="hero"
         >
-          <Container maxWidth="xl" sx={{ flex: 1, display: 'flex', alignItems: 'center' }}>
+          <Container maxWidth="xl" sx={{ flex: 1, display: 'flex', alignItems: 'flex-start', pt: { xs: 10, md: 12 } }}>
             <AnimatePresence>
               {activeSection === 0 && (
                 <motion.div
@@ -469,7 +467,7 @@ const Home: React.FC = () => {
           ref={(el) => { sectionRefs.current[1] = el; }}
           id="about"
         >
-          <Container maxWidth="xl" className="no-scrollbar" sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'scroll', py: 2 }}>
+          <Container maxWidth="xl" className="no-scrollbar" sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', overflowY: 'scroll', pt: { xs: 10, md: 12 }, pb: 2 }}>
             <AnimatePresence>
               {activeSection === 1 && (
                 <motion.div
@@ -577,7 +575,7 @@ const Home: React.FC = () => {
           ref={(el) => { sectionRefs.current[2] = el; }}
           id="certificate"
         >
-          <Container maxWidth="xl" className="no-scrollbar" sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'scroll', py: 4 }}>
+          <Container maxWidth="xl" className="no-scrollbar" sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', overflowY: 'scroll', pt: { xs: 10, md: 12 }, pb: 4 }}>
             <AnimatePresence>
               {activeSection === 2 && (
                 <motion.div
@@ -658,7 +656,7 @@ const Home: React.FC = () => {
           ref={(el) => { sectionRefs.current[3] = el; }}
           id="experience"
         >
-          <Container maxWidth="xl" className="no-scrollbar" sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'scroll', py: 2 }}>
+          <Container maxWidth="xl" className="no-scrollbar" sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', overflowY: 'scroll', pt: { xs: 10, md: 12 }, pb: 2 }}>
             <AnimatePresence>
               {activeSection === 3 && (
                 <motion.div
@@ -723,7 +721,7 @@ const Home: React.FC = () => {
           ref={(el) => { sectionRefs.current[4] = el; }}
           id="projects"
         >
-          <Container maxWidth="xl" className="no-scrollbar" sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'scroll', py: 4 }}>
+          <Container maxWidth="xl" className="no-scrollbar" sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', overflowY: 'scroll', pt: { xs: 8, md: 10 }, pb: 4 }}>
             <AnimatePresence>
               {activeSection === 4 && (
                 <motion.div
@@ -931,7 +929,7 @@ const Home: React.FC = () => {
           ref={(el) => { sectionRefs.current[5] = el; }}
           id="education"
         >
-          <Container maxWidth="xl" className="no-scrollbar" sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'scroll', py: 2 }}>
+          <Container maxWidth="xl" className="no-scrollbar" sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', overflowY: 'scroll', pt: { xs: 10, md: 12 }, pb: 2 }}>
             <AnimatePresence>
               {activeSection === 5 && (
                 <motion.div
@@ -996,7 +994,7 @@ const Home: React.FC = () => {
           ref={(el) => { sectionRefs.current[6] = el; }}
           id="skills"
         >
-          <Container maxWidth="xl" className="no-scrollbar" sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', overflowY: 'scroll', py: 1 }}>
+          <Container maxWidth="xl" className="no-scrollbar" sx={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', overflowY: 'scroll', pt: { xs: 10, md: 12 }, pb: 1 }}>
             <AnimatePresence>
               {activeSection === 6 && (
                 <motion.div
