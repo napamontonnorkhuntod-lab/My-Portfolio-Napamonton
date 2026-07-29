@@ -4,8 +4,12 @@ import { ArrowUpward } from "@mui/icons-material";
 const TopPage:React.FC = () => {
 
     const goTop = () => {
-        window.scrollTo({top:0, behavior:'smooth'})
-        
+        const scrollContainer = document.querySelector('.scroll-container');
+        if (scrollContainer) {
+            scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     }
 
     return(

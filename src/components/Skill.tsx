@@ -16,19 +16,19 @@ const Skill: React.FC<MotionSkillProps> = ({ name, skill, pic, ...motionProps })
   return (
     <MotionBox
       {...motionProps}
-      className="w-full sm:w-full md:w-2/4 lg:w-1/4 p-3 justify-center"
+      className="w-full"
     >
       <Box
-        className="bg-[#1C2D38] p-5 hover:bg-[#f9be1dcc] flex items-center justify-center"
-        height={276}
-        borderRadius={5}
+        className="bg-[#1C2D38] p-4 hover:bg-[#f9be1dcc] flex items-center justify-center transition-colors duration-300"
+        height={150}
+        borderRadius={4}
       >
-        <Box className="flex flex-col justify-center">
-          <Box className="w-full max-w-[100px] mx-auto">
-            <img src={pic} alt="Skill Icon" className="object-cover w-full h-full" />
+        <Box className="flex flex-col justify-center items-center">
+          <Box className="w-full max-w-[60px] mx-auto">
+            <img src={pic} alt={`${name} icon`} className="object-contain w-full h-full" />
           </Box>
 
-          <Typography variant="subtitle1" align="center" className="mt-5">
+          <Typography variant="body2" align="center" className="mt-2" sx={{ fontSize: '0.8rem' }}>
             {name}
           </Typography>
         </Box>

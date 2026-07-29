@@ -1,5 +1,6 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import menu from "../assets/config/Menu";
+import { motion } from "framer-motion";
 
 import "../App.css"
 
@@ -21,7 +22,12 @@ import Button from '@mui/material/Button';
 
 
 
-const Navbar:React.FC = () =>{
+interface NavbarProps {
+    scrollToSection?: (id: string) => void;
+    onShowResume?: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ scrollToSection, onShowResume }) => {
 
     const navigate = useNavigate()
 
@@ -29,7 +35,7 @@ const Navbar:React.FC = () =>{
 
 
 
-    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);    
+    const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 
     const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorElNav(event.currentTarget);
@@ -44,94 +50,97 @@ const Navbar:React.FC = () =>{
         threshold: 0,
     });
 
-    return(
+    const words = ["DEVELOPER", "FRONT END", "BACK END", "FULL STACK"];
+    const [displayedText, setDisplayedText] = useState("");
+    const [isDeleting, setIsDeleting] = useState(false);
+    const [loopNum, setLoopNum] = useState(0);
+    const [typingSpeed, setTypingSpeed] = useState(150);
+
+    useEffect(() => {
+        const i = loopNum % words.length;
+        const fullText = words[i];
+
+        const timer = setTimeout(() => {
+            if (isDeleting) {
+                setDisplayedText(fullText.substring(0, displayedText.length - 1));
+                setTypingSpeed(75); // Faster when deleting
+            } else {
+                setDisplayedText(fullText.substring(0, displayedText.length + 1));
+                setTypingSpeed(150); // Normal typing speed
+            }
+
+            if (!isDeleting && displayedText === fullText) {
+                setTimeout(() => setIsDeleting(true), 2000); // Pause at end of word
+            } else if (isDeleting && displayedText === "") {
+                setIsDeleting(false);
+                setLoopNum((prev) => prev + 1);
+                setTypingSpeed(500); // Pause before next word
+            }
+        }, typingSpeed);
+
+        return () => clearTimeout(timer);
+    }, [displayedText, isDeleting, loopNum, typingSpeed]);
+
+    return (
         <>
             <CssBaseline />
-                <AppBar 
-                    position="fixed"
-                    color="transparent"
-                    elevation={0}
-                    sx={{
-                        backgroundColor: trigger ? '#f9be1ded' : 'transparent',
-                        transition: 'background-color 0.3s ease, backdrop-filter 0.3s ease',
-                        fontFamily:'NotoSansThai',
-                        zIndex:999,
-                    }}
-                    className="py-2"
-                >
-                    <Container maxWidth="xl">
-                        <Toolbar disableGutters>
+            <AppBar
+                position="fixed"
+                color="transparent"
+                elevation={0}
+                sx={{
+                    backgroundColor: 'transparent',
+                    transition: 'background-color 0.3s ease, backdrop-filter 0.3s ease',
+                    fontFamily: 'NotoSansThai',
+                    zIndex: 999,
+                }}
+                className="py-2"
+            >
+                <Container maxWidth="xl">
+                    <Toolbar disableGutters>
+                        <Box sx={{ flex: 1, display: { xs: 'none', md: 'flex' } }}>
                             <Typography
                                 variant="h6"
                                 noWrap
                                 component="a"
-                                href="#app-bar-with-responsive-menu"
+                                className="cursor-pointer"
                                 sx={{
                                     mr: 2,
-                                    display: { xs: 'none', md: 'flex' },
                                     fontFamily: 'monospace',
                                     fontWeight: 700,
                                     letterSpacing: '.3rem',
                                     color: 'inherit',
                                     textDecoration: 'none',
                                 }}
-                                onClick={()=>
-                                    navigate('/home')
+                                onClick={() =>
+                                    navigate('/')
                                 }
                             >
                                 Napamonton
                             </Typography>
+                        </Box>
 
-                            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                                <IconButton
-                                    size="large"
-                                    aria-label="account of current user"
-                                    aria-controls="menu-appbar"
-                                    aria-haspopup="true"
-                                    onClick={handleOpenNavMenu}
-                                    color="inherit"
-                                >
-                                    <MenuIcon />
-                                </IconButton>
-
-                                <Menu
-                                    id="menu-appbar"
-                                    anchorEl={anchorElNav}
-                                    anchorOrigin={{
-                                        vertical: 'bottom',
-                                        horizontal: 'left',
-                                    }}
-                                    keepMounted
-                                    transformOrigin={{
-                                        vertical: 'top',
-                                        horizontal: 'left',
-                                    }}
-                                    open={Boolean(anchorElNav)}
-                                    onClose={handleCloseNavMenu}
-                                    sx={{ display: { xs: 'block', md: 'none' }}}
-                                >
-                                    {pages.map((page) => (
-                                        <MenuItem key={page.path} 
-                                            onClick={()=> {
-                                                handleCloseNavMenu();
-                                                navigate(page.path);
-                                            }}
-                                            sx={{justifyContent:'center'}}
-                                        >
-                                                <Typography sx={{ textAlign: 'center'}}>{page.label}</Typography>                                                                                      
-                                        </MenuItem>
-                                    ))}
-                                </Menu>
+                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-end' }}>
+                            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                <Typography variant="subtitle1" sx={{ fontWeight: 700, letterSpacing: '.1rem', color: 'inherit' }}>
+                                    {displayedText}
+                                </Typography>
+                                <motion.div
+                                    animate={{ opacity: [1, 0] }}
+                                    transition={{ repeat: Infinity, duration: 0.8 }}
+                                    style={{ width: '2px', height: '1.2rem', backgroundColor: 'currentColor', marginLeft: '4px' }}
+                                />
                             </Box>
-                        
-                            <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                        </Box>
 
-                            <Typography
-                                variant="h5"
-                                noWrap
-                                component="a"
-                                href="#app-bar-with-responsive-menu"
-                                sx={{
+                        <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+
+                        <Typography
+                            variant="h5"
+                            noWrap
+                            component="a"
+                            href="#app-bar-with-responsive-menu"
+                            sx={{
                                 mr: 2,
                                 display: { xs: 'flex', md: 'none' },
                                 flexGrow: 1,
@@ -140,36 +149,49 @@ const Navbar:React.FC = () =>{
                                 letterSpacing: '.3rem',
                                 color: 'inherit',
                                 textDecoration: 'none',
-                                }}
-                                onClick={()=>
-                                    navigate('/home')
-                                }
-                            >
-                                LOGO
+                            }}
+                            onClick={() =>
+                                navigate('/home')
+                            }
+                        >
+                            LOGO
+                        </Typography>
+
+                        <Box sx={{ flex: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center', alignItems: 'center' }}>
+                            <Typography variant="h6" sx={{ fontWeight: 700, letterSpacing: '.2rem', color: 'inherit' }}>
+                                {displayedText}
                             </Typography>
+                            <motion.div
+                                animate={{ opacity: [1, 0] }}
+                                transition={{ repeat: Infinity, duration: 0.8 }}
+                                style={{ width: '2px', height: '1.2rem', backgroundColor: 'currentColor', marginLeft: '4px' }}
+                            />
+                        </Box>
 
-                            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent:'end' }}>
-                                {pages.map((page) => (
-                                <Button
-                                    key={page.path}
-                                    onClick={()=> {
-                                        handleCloseNavMenu();
-                                        navigate(page.path);
-                                    }}
-                                    sx={{ my: 2,display: 'block', fontSize:'1rem',textTransform:'none',mx:2, backgroundColor:'transparent' }}                                           
-                                    className="btn-menu"                                            
-                                >
-                                    {page.label} 
-                                </Button>
-                                ))}
-                            </Box>
+                        <Box sx={{ flex: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end', alignItems: 'center' }}>
+                            <Button
+                                onClick={onShowResume}
+                                variant="contained"
+                                sx={{
+                                    backgroundColor: '#D32F2F',
+                                    color: 'white',
+                                    '&:hover': { backgroundColor: '#B71C1C' },
+                                    fontWeight: 'bold',
+                                    textTransform: 'none',
+                                    px: 3,
+                                    borderRadius: '20px'
+                                }}
+                            >
+                                Resume
+                            </Button>
+                        </Box>
 
-                        </Toolbar>
-                    </Container>
-                </AppBar>
+                    </Toolbar>
+                </Container>
+            </AppBar>
 
-           
-            <Toolbar  sx={{ mb:5 }}/>
+
+            <Toolbar sx={{ mb: 5 }} />
         </>
     )
 }
