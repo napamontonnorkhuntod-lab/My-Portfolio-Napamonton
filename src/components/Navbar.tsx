@@ -20,6 +20,7 @@ const words = ["DEVELOPER", "FRONT END", "BACK END", "FULL STACK"];
 
 interface NavbarProps {
     onShowResume?: () => void;
+    scrollToSection?: (id: string) => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onShowResume }) => {
