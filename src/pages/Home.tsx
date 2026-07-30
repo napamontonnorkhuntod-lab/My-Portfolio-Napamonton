@@ -7,6 +7,7 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import EmailIcon from '@mui/icons-material/Email';
 import ChatIcon from '@mui/icons-material/Chat';
 import { motion, AnimatePresence } from "framer-motion";
+import type { Variants } from "framer-motion";
 
 import BasicTimeline from "../components/TimeLine";
 import Skill from "../components/Skill";
@@ -17,19 +18,19 @@ import DotNav from '../components/DotNav';
 import { useRef, useState, useEffect, useCallback } from "react";
 
 // ========== Section animation variants ==========
-const sectionVariants = {
+const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 60 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.6,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+      ease: [0.22, 1, 0.36, 1],
     },
   },
 };
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   show: {
     transition: {
@@ -38,7 +39,7 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: -100 },
   show: {
     opacity: 1,
