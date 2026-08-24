@@ -607,20 +607,27 @@ const Home: React.FC = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ type: 'spring', stiffness: 100, damping: 10, delay: 0.2 }}
                             variant='h4'
-                            className='mb-5 mt-1'
                             fontWeight={800}
-                            sx={{ textAlign: { xs: 'center', lg: 'left' } }}
+                            sx={{
+                              textAlign: { xs: 'center', lg: 'left' },
+                              mb: { xs: 0.5, sm: 1, lg: 2.5 },
+                              mt: 0,
+                              fontSize: { xs: '1.75rem', sm: '2rem', md: '2.25rem' }
+                            }}
                           >
                             {lang === 'th' ? 'สวัสดีครับ' : 'Hello'}<span className='text-red-600'>.</span>
                           </MotionTypography>
 
                           <MotionTypography
                             variant='h4'
-                            className='my-5'
                             initial={{ opacity: 0, y: -100 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ type: 'spring', stiffness: 100, damping: 10, delay: 0.35 }}
-                            sx={{ textAlign: { xs: 'center', lg: 'left' } }}
+                            sx={{
+                              textAlign: { xs: 'center', lg: 'left' },
+                              my: { xs: 0.5, sm: 1, lg: 2.5 },
+                              fontSize: { xs: '1.6rem', sm: '1.9rem', md: '2.15rem' }
+                            }}
                           >
                             <span className='text-red-600'>____</span>
                             {lang === 'th' ? 'ผม นภมณฑล' : "I'm Napamonton"}
@@ -631,12 +638,15 @@ const Home: React.FC = () => {
 
                           <MotionTypography
                             variant='h3'
-                            className='my-5'
                             fontWeight={800}
                             initial={{ opacity: 0, y: -100 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ type: 'spring', stiffness: 100, damping: 10, delay: 0.5 }}
-                            sx={{ textAlign: { xs: 'center', lg: 'left' } }}
+                            sx={{
+                              textAlign: { xs: 'center', lg: 'left' },
+                              my: { xs: 0.5, sm: 1, lg: 2.5 },
+                              fontSize: { xs: '2rem', sm: '2.4rem', md: '3rem' }
+                            }}
                           >
                             {lang === 'th' ? 'นักพัฒนาซอฟต์แวร์' : 'Developer'}
                           </MotionTypography>
@@ -698,7 +708,7 @@ const Home: React.FC = () => {
                           </motion.div>
                         </Box>
 
-                        <Box className="my-5" sx={{ textAlign: { xs: 'center', lg: 'start' } }}>
+                        <Box sx={{ my: { xs: 2, sm: 2.5, lg: 4 }, textAlign: { xs: 'center', lg: 'start' } }}>
                           <MotionButton
                             initial={{ opacity: 0, y: -100 }}
                             animate={{ opacity: 1, y: 0 }}
