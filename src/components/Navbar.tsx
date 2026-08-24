@@ -98,8 +98,37 @@ const Navbar: React.FC<NavbarProps> = ({ onShowResume, lang = 'en', onToggleLang
                             </Typography>
                         </Box>
 
-                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-end', alignItems: 'center', gap: 1 }}>
-                            {/* Mobile Language Toggle */}
+                        {/* Mobile Brand (Far Left) */}
+                        <Box
+                            sx={{
+                                display: { xs: 'flex', md: 'none' },
+                                alignItems: 'center',
+                                cursor: 'pointer',
+                            }}
+                            onClick={() => navigate('/home')}
+                        >
+                            <AdbIcon sx={{ mr: 1, fontSize: '1.4rem' }} />
+                            <Typography
+                                variant="h6"
+                                noWrap
+                                sx={{
+                                    fontFamily: 'monospace',
+                                    fontWeight: 700,
+                                    letterSpacing: '.2rem',
+                                    color: 'inherit',
+                                    textDecoration: 'none',
+                                    fontSize: '1.15rem',
+                                }}
+                            >
+                                Napamonton
+                            </Typography>
+                        </Box>
+
+                        {/* Mobile Spacer to push toggle to the far right */}
+                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} />
+
+                        {/* Mobile Language Toggle (Far Right - Fixed) */}
+                        <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center' }}>
                             <Box
                                 onClick={onToggleLang}
                                 sx={{
@@ -110,70 +139,43 @@ const Navbar: React.FC<NavbarProps> = ({ onShowResume, lang = 'en', onToggleLang
                                     p: '2px',
                                     cursor: 'pointer',
                                     border: '1px solid rgba(255, 255, 255, 0.18)',
+                                    flexShrink: 0,
+                                    userSelect: 'none',
+                                    '&:hover': {
+                                        borderColor: '#f9be1d',
+                                    }
                                 }}
                             >
                                 <Box
                                     sx={{
-                                        px: 1,
-                                        py: 0.2,
+                                        px: 1.2,
+                                        py: 0.3,
                                         borderRadius: '12px',
-                                        fontSize: '0.7rem',
+                                        fontSize: '0.72rem',
                                         fontWeight: 700,
                                         bgcolor: lang === 'en' ? '#f9be1d' : 'transparent',
                                         color: lang === 'en' ? '#121F28' : '#aaa',
+                                        transition: 'all 0.2s ease',
                                     }}
                                 >
                                     EN
                                 </Box>
                                 <Box
                                     sx={{
-                                        px: 1,
-                                        py: 0.2,
+                                        px: 1.2,
+                                        py: 0.3,
                                         borderRadius: '12px',
-                                        fontSize: '0.7rem',
+                                        fontSize: '0.72rem',
                                         fontWeight: 700,
                                         bgcolor: lang === 'th' ? '#f9be1d' : 'transparent',
                                         color: lang === 'th' ? '#121F28' : '#aaa',
+                                        transition: 'all 0.2s ease',
                                     }}
                                 >
                                     TH
                                 </Box>
                             </Box>
-                            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                <Typography variant="subtitle2" sx={{ fontWeight: 700, letterSpacing: '.1rem', color: 'inherit' }}>
-                                    {displayedText}
-                                </Typography>
-                                <motion.div
-                                    animate={{ opacity: [1, 0] }}
-                                    transition={{ repeat: Infinity, duration: 0.8 }}
-                                    style={{ width: '2px', height: '1.2rem', backgroundColor: 'currentColor', marginLeft: '4px' }}
-                                />
-                            </Box>
                         </Box>
-
-                        <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-
-                        <Typography
-                            variant="h5"
-                            noWrap
-                            component="a"
-                            href="#app-bar-with-responsive-menu"
-                            sx={{
-                                mr: 2,
-                                display: { xs: 'flex', md: 'none' },
-                                flexGrow: 1,
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.3rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                            }}
-                            onClick={() =>
-                                navigate('/home')
-                            }
-                        >
-                            Napamonton
-                        </Typography>
 
                         <Box sx={{ flex: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'center', alignItems: 'center' }}>
                             <Typography variant="h6" sx={{ fontWeight: 700, letterSpacing: '.2rem', color: 'inherit' }}>
