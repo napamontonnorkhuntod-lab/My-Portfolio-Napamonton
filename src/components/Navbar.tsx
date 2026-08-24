@@ -21,9 +21,11 @@ const words = ["DEVELOPER", "FRONT END", "BACK END", "FULL STACK"];
 interface NavbarProps {
     onShowResume?: () => void;
     scrollToSection?: (id: string) => void;
+    lang?: 'en' | 'th';
+    onToggleLang?: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onShowResume }) => {
+const Navbar: React.FC<NavbarProps> = ({ onShowResume, lang = 'en', onToggleLang }) => {
 
     const navigate = useNavigate()
 
@@ -96,9 +98,49 @@ const Navbar: React.FC<NavbarProps> = ({ onShowResume }) => {
                             </Typography>
                         </Box>
 
-                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-end' }}>
+                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-end', alignItems: 'center', gap: 1 }}>
+                            {/* Mobile Language Toggle */}
+                            <Box
+                                onClick={onToggleLang}
+                                sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    bgcolor: 'rgba(255, 255, 255, 0.08)',
+                                    borderRadius: '16px',
+                                    p: '2px',
+                                    cursor: 'pointer',
+                                    border: '1px solid rgba(255, 255, 255, 0.18)',
+                                }}
+                            >
+                                <Box
+                                    sx={{
+                                        px: 1,
+                                        py: 0.2,
+                                        borderRadius: '12px',
+                                        fontSize: '0.7rem',
+                                        fontWeight: 700,
+                                        bgcolor: lang === 'en' ? '#f9be1d' : 'transparent',
+                                        color: lang === 'en' ? '#121F28' : '#aaa',
+                                    }}
+                                >
+                                    EN
+                                </Box>
+                                <Box
+                                    sx={{
+                                        px: 1,
+                                        py: 0.2,
+                                        borderRadius: '12px',
+                                        fontSize: '0.7rem',
+                                        fontWeight: 700,
+                                        bgcolor: lang === 'th' ? '#f9be1d' : 'transparent',
+                                        color: lang === 'th' ? '#121F28' : '#aaa',
+                                    }}
+                                >
+                                    TH
+                                </Box>
+                            </Box>
                             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                <Typography variant="subtitle1" sx={{ fontWeight: 700, letterSpacing: '.1rem', color: 'inherit' }}>
+                                <Typography variant="subtitle2" sx={{ fontWeight: 700, letterSpacing: '.1rem', color: 'inherit' }}>
                                     {displayedText}
                                 </Typography>
                                 <motion.div
@@ -144,7 +186,56 @@ const Navbar: React.FC<NavbarProps> = ({ onShowResume }) => {
                             />
                         </Box>
 
-                        <Box sx={{ flex: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end', alignItems: 'center' }}>
+                        <Box sx={{ flex: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end', alignItems: 'center', gap: 2 }}>
+                            {/* Language Toggle */}
+                            <Box
+                                onClick={onToggleLang}
+                                sx={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    bgcolor: 'rgba(255, 255, 255, 0.08)',
+                                    borderRadius: '20px',
+                                    p: '3px',
+                                    cursor: 'pointer',
+                                    border: '1px solid rgba(255, 255, 255, 0.18)',
+                                    transition: 'all 0.3s ease',
+                                    userSelect: 'none',
+                                    '&:hover': {
+                                        borderColor: '#f9be1d',
+                                        bgcolor: 'rgba(255, 255, 255, 0.12)',
+                                    }
+                                }}
+                            >
+                                <Box
+                                    sx={{
+                                        px: 1.5,
+                                        py: 0.4,
+                                        borderRadius: '16px',
+                                        fontSize: '0.8rem',
+                                        fontWeight: 700,
+                                        bgcolor: lang === 'en' ? '#f9be1d' : 'transparent',
+                                        color: lang === 'en' ? '#121F28' : '#aaa',
+                                        transition: 'all 0.25s ease',
+                                    }}
+                                >
+                                    EN
+                                </Box>
+                                <Box
+                                    sx={{
+                                        px: 1.5,
+                                        py: 0.4,
+                                        borderRadius: '16px',
+                                        fontSize: '0.8rem',
+                                        fontWeight: 700,
+                                        bgcolor: lang === 'th' ? '#f9be1d' : 'transparent',
+                                        color: lang === 'th' ? '#121F28' : '#aaa',
+                                        transition: 'all 0.25s ease',
+                                    }}
+                                >
+                                    TH
+                                </Box>
+                            </Box>
+
                             <Button
                                 onClick={onShowResume}
                                 variant="contained"
@@ -158,7 +249,7 @@ const Navbar: React.FC<NavbarProps> = ({ onShowResume }) => {
                                     borderRadius: '20px'
                                 }}
                             >
-                                Resume
+                                {lang === 'th' ? 'เรซูเม่' : 'Resume'}
                             </Button>
                         </Box>
 
